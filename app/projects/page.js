@@ -16,11 +16,80 @@ export default function ProjectsPage() {
   const [selectedTech, setSelectedTech] = useState("All")
 
   // Combine translation data with project data using translation keys
-  const projects = projectsData.map((project) => ({
-    ...project,
-    title: t[project.titleKey] || "Project Title",
-    description: t[project.descriptionKey] || "Project Description",
-  }))
+  // const projects = projectsData.map((project) => ({
+  //   ...project,
+  //   title: t[project.titleKey] || "Project Title",
+  //   description: t[project.descriptionKey] || "Project Description",
+  // }))
+
+  const projects = [{
+      title:'Gf Center',
+      caption:'Cenetr of corses',
+      img:'/works/Capture.PNG',
+      linkView:'https://hassan3030.github.io/gf_center/',
+      linkHup:'https://github.com/hassan3030/gf_center',
+      technologies:['HTML' , 'CSS' , 'Bootstrap']
+      ,description:""
+    },
+   
+    {
+      title:'BentDesin',
+      caption:'Simple page with animation',
+      img:'/works/c3.PNG',
+      linkView:'https://hassan3030.github.io/bentDesin/',
+      linkHup:'https://github.com/hassan3030/bentDesin',
+               technologies:['HTML' , 'CSS' , 'Bootstrap']
+               ,description:""
+    },{
+      title:'Doctor',
+      caption:'Simple page of mediccine',
+      img:'/works/Capture4.PNG',
+      linkView:'https://hassan3030.github.io/doctor/',
+      linkHup:'https://github.com/hassan3030/doctor',
+       technologies:['HTML' , 'CSS' , 'Bootstrap']
+       ,description:""
+    },
+    {
+      title:'Profile',
+      caption:'This is profile',
+      img:'/works/Capture5.PNG',
+      linkView:'https://hassan3030.github.io/profile/',
+      linkHup:'https://github.com/hassan3030/profile',
+     technologies:['HTML' , 'CSS' , 'Bootstrap']
+     ,description:""
+    },
+    {
+      title:'Epilogue',
+      caption:'Simple page',
+      img:'/works/Capture6.PNG',
+      linkView:'https://hassan3030.github.io/epilogue/',
+      linkHup:'https://github.com/hassan3030/epilogue',
+           technologies:['HTML' , 'CSS' , 'Bootstrap' , 'Fontawsome']
+           ,description:""
+    },
+    {
+      title:'E_Commerce',
+      caption:'E_Commerce to pay close',
+      img:'/works/c7.PNG',
+      linkView:'https://hassan3030.github.io/E_com/',
+      linkHup:'https://github.com/hassan3030/E_com',
+         technologies:['HTML' , 'CSS' , 'Bootstrap' , 'Fontawsome']
+         ,description:""
+    },
+    {
+      title:'Agency',
+      caption:'Simple web site',
+      img:'/works/Capture8.PNG',
+      linkView:'https://hassan3030.github.io/agency/',
+      linkHup:'https://github.com/hassan3030/agency',
+        technologies:['HTML' , 'CSS' , 'Bootstrap' , 'Fontawsome']
+        ,description:""
+    },
+
+  ]
+  
+   
+  
 
   const allTechnologies = [...new Set(projects.flatMap((project) => project.technologies))]
   const filteredProjects =
@@ -80,7 +149,7 @@ export default function ProjectsPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, index) => (
             <motion.div
-              key={project.id}
+              key={project.title}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -88,7 +157,7 @@ export default function ProjectsPage() {
               <Card className="h-full neon-border hover:glow-effect transition-all duration-300">
                 <div className="relative overflow-hidden rounded-t-lg">
                   <Image
-                    src={project.image || "/placeholder.svg"}
+                    src={project.img || "/placeholder.svg"}
                     alt={project.title}
                     width={300}
                     height={200}
@@ -111,19 +180,20 @@ export default function ProjectsPage() {
                     ))}
                   </div>
 
-                  <div className="flex gap-2 pt-2">
+                  <div className="flex gap-2 pt-2 mt-auto ">
                     <Button size="sm" className="flex-1" asChild>
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                      <a href={project.linkView} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="w-4 h-4 mr-2" />
                         {t.liveDemo}
                       </a>
                     </Button>
                     <Button size="sm" variant="outline" asChild>
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                      <a href={project.linkHup} target="_blank" rel="noopener noreferrer">
                         <Github className="w-4 h-4" />
                       </a>
                     </Button>
                   </div>
+
                 </CardContent>
               </Card>
             </motion.div>

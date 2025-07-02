@@ -17,7 +17,9 @@ export default function HomePage() {
   useEffect(() => {
     setMounted(true)
   }, [])
-
+useEffect(() => {
+  document.title = "Hassan Hamdi - Frontend Developer";
+}, []);
   // Prevent hydration mismatch
   if (!mounted) {
     return (
@@ -27,7 +29,7 @@ export default function HomePage() {
             <div className="space-y-6">
               <p className="text-lg text-muted-foreground">Hello, I'm</p>
               <h1 className="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">
-                Hassan Hamdi
+                Hassan Hamdi 
               </h1>
               <h2 className="text-2xl lg:text-3xl font-semibold text-foreground">Frontend Developer</h2>
               <div className="flex items-center gap-2 text-muted-foreground">
@@ -39,7 +41,7 @@ export default function HomePage() {
               <div className="w-80 h-80 rounded-full bg-gradient-to-br from-primary/20 to-orange-500/20 p-2">
                 <div className="w-full h-full rounded-full overflow-hidden bg-muted">
                   <Image
-                    src="/placeholder.svg?height=320&width=320"
+                    src="/Myphoto.JPG"
                     alt="Hassan Hamdi"
                     width={320}
                     height={320}
@@ -132,10 +134,13 @@ export default function HomePage() {
                   {t.viewProjects}
                 </Button>
               </Link>
-              <Button variant="outline" size="lg" className="neon-border bg-transparent">
+              <Link href="/resume.pdf" target="_blank">
+                <Button variant="outline" size="lg" className="neon-border bg-transparent">
                 <Download className="w-4 h-4 mr-2" />
                 {t.downloadCV}
               </Button>
+              </Link>
+            
               <Link href="/contact">
                 <Button variant="ghost" size="lg">
                   <Mail className="w-4 h-4 mr-2" />
@@ -150,16 +155,18 @@ export default function HomePage() {
               transition={{ delay: 0.8 }}
               className="flex gap-4 pt-4"
             >
-              <a href="https://github.com/HassanHamdi" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/hassan3030" target="_blank" rel="noopener noreferrer">
                 <Button variant="ghost" size="icon" className="hover:text-primary">
                   <Github className="w-5 h-5" />
                 </Button>
               </a>
-              <a href="https://linkedin.com/in/hassan-hamdi" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/hassan-hamdia" target="_blank" rel="noopener noreferrer">
                 <Button variant="ghost" size="icon" className="hover:text-primary">
                   <Linkedin className="w-5 h-5" />
                 </Button>
               </a>
+
+              
             </motion.div>
           </motion.div>
 
@@ -174,11 +181,12 @@ export default function HomePage() {
               <div className="w-80 h-80 rounded-full bg-gradient-to-br from-primary/20 to-orange-500/20 p-2 glow-effect">
                 <div className="w-full h-full rounded-full overflow-hidden bg-muted">
                   <Image
-                    src="/placeholder.svg?height=320&width=320"
+                   src="/Myphoto.JPG"
+                    // src="/placeholder.svg?height=320&width=320"
                     alt="Hassan Hamdi"
                     width={320}
                     height={320}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full "
                   />
                 </div>
               </div>
@@ -204,7 +212,7 @@ export default function HomePage() {
             <p className="text-muted-foreground">{t.yearsExp}</p>
           </Card>
           <Card className="p-6 text-center neon-border">
-            <h3 className="text-2xl font-bold text-primary">15+</h3>
+            <h3 className="text-2xl font-bold text-primary">35+</h3>
             <p className="text-muted-foreground">{t.projectsCompleted}</p>
           </Card>
           <Card className="p-6 text-center neon-border">

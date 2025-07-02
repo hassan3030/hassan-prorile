@@ -7,7 +7,7 @@ import { Download, GraduationCap, MapPin, Calendar } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import { translations } from "@/lib/translations"
 import Image from "next/image"
-
+import Link from "next/link"
 export default function AboutPage() {
   const { language } = useLanguage()
   const t = translations[language]
@@ -41,11 +41,11 @@ export default function AboutPage() {
                 <div className="w-48 h-48 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary/20 to-orange-500/20 p-2 glow-effect">
                   <div className="w-full h-full rounded-full overflow-hidden bg-muted">
                     <Image
-                      src="/placeholder.svg?height=192&width=192"
+                      src={"/Myphoto.JPG"||"/placeholder.svg?height=192&width=192"}
                       alt="Hassan Hamdi"
                       width={192}
                       height={192}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full "
                     />
                   </div>
                 </div>
@@ -55,10 +55,12 @@ export default function AboutPage() {
                   <MapPin className="w-4 h-4" />
                   <span>{t.location}</span>
                 </div>
+               <Link href="/resume.pdf">
                 <Button className="w-full glow-effect">
                   <Download className="w-4 h-4 mr-2" />
                   {t.downloadCV}
                 </Button>
+               </Link>
               </CardContent>
             </Card>
           </motion.div>

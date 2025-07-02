@@ -10,7 +10,6 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "Hassan Hamdi - Frontend Developer",
   description: "Portfolio of Hassan Hamdi, Frontend Developer from Cairo, Egypt",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({ children }) {

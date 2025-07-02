@@ -65,17 +65,17 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <span className="text-sm text-muted-foreground hidden md:block">{t.connect}</span>
             <div className="flex gap-2">
-              <a href="https://github.com/HassanHamdi" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/hassan3030" target="_blank" rel="noopener noreferrer">
                 <Button variant="ghost" size="icon" className="hover:text-primary">
                   <Github className="w-4 h-4" />
                 </Button>
               </a>
-              <a href="https://linkedin.com/in/hassan-hamdi" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/hassan-hamdia" target="_blank" rel="noopener noreferrer">
                 <Button variant="ghost" size="icon" className="hover:text-primary">
                   <Linkedin className="w-4 h-4" />
                 </Button>
               </a>
-              <a href="mailto:hassan@example.com">
+              <a href="mailto:hassan.hamdi.dev@gmail.com">
                 <Button variant="ghost" size="icon" className="hover:text-primary">
                   <Mail className="w-4 h-4" />
                 </Button>

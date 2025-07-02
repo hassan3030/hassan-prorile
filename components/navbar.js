@@ -31,7 +31,7 @@ export default function Navbar() {
               href="/"
               className="text-2xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent"
             >
-              HH
+              HH.DEV
             </Link>
             <div className="flex items-center space-x-2">
               <Button variant="ghost" size="icon">
@@ -74,17 +74,17 @@ export default function Navbar() {
             href="/"
             className="text-2xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent"
           >
-            HH
+             HH.DEV
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-6 ">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  pathname === item.href ? "text-primary" : "text-muted-foreground"
+                className={`text-sm font-medium transition-colors hover:text-primary  ${
+                  pathname === item.href ? "text-primary " : "text-muted-foreground first:px-4 "
                 }`}
               >
                 {item.label}
@@ -93,12 +93,12 @@ export default function Navbar() {
           </div>
 
           {/* Theme and Language Toggle */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
             <Button variant="ghost" size="icon" onClick={toggleTheme}>
               {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </Button>
             <Button variant="ghost" size="icon" onClick={toggleLanguage}>
-              <Globe className="w-5 h-5" />
+              {/* <Globe className="w-5 h-5" /> */}
               <span className="ml-1 text-xs">{language.toUpperCase()}</span>
             </Button>
 
