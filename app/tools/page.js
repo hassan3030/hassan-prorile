@@ -9,6 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Clock, CheckSquare, AlarmClockIcon as AlarmIcon, Play, Pause, RotateCcw, Plus, Trash2 } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import { translations } from "@/lib/translations"
+import { useAudio, speak } from "@/lib/audio-utils"
 
 // Pomodoro Timer Component
 function PomodoroTimer({ t }) {
@@ -16,6 +17,10 @@ function PomodoroTimer({ t }) {
   const [isActive, setIsActive] = useState(false)
   const [isBreak, setIsBreak] = useState(false)
   const [sessions, setSessions] = useState(0)
+  
+  // Add audio hooks
+  const startSound = useAudio("/sounds/pomodoro-start.wav")
+  const breakSound = useAudio("/sounds/pomodoro-break.wav")
 
   useEffect(() => {
     let interval = null
@@ -29,17 +34,29 @@ function PomodoroTimer({ t }) {
         setTime(25 * 60) // Back to work
         setIsBreak(false)
         setSessions(sessions + 1)
+        // Play work session start sound
+        startSound.play()
+        // Announce work session start
+        speak(t.pomodoroWork, { lang: t === translations.ar ? 'ar-SA' : 'en-US' })
       } else {
         setTime(5 * 60) // Break time
         setIsBreak(true)
+        // Play break start sound
+        breakSound.play()
+        // Announce break start
+        speak(t.pomodoroBreak, { lang: t === translations.ar ? 'ar-SA' : 'en-US' })
       }
       setIsActive(false)
-      // Play notification sound (you can add audio here)
     }
     return () => clearInterval(interval)
-  }, [isActive, time, isBreak, sessions])
+  }, [isActive, time, isBreak, sessions, t, startSound, breakSound])
 
   const toggleTimer = () => {
+    if (!isActive && time === (isBreak ? 5 * 60 : 25 * 60)) {
+      // Starting a fresh timer
+      startSound.play()
+      speak(isBreak ? t.pomodoroBreak : t.pomodoroWork, { lang: t === translations.ar ? 'ar-SA' : 'en-US' })
+    }
     setIsActive(!isActive)
   }
 
@@ -116,6 +133,9 @@ function PomodoroTimer({ t }) {
 function TodoList({ t }) {
   const [todos, setTodos] = useState([])
   const [newTodo, setNewTodo] = useState("")
+  
+  // Add audio hook
+  const completeSound = useAudio("/sounds/task-complete.wav")
 
   useEffect(() => {
     // Load todos from localStorage
@@ -146,7 +166,16 @@ function TodoList({ t }) {
   }
 
   const toggleTodo = (id) => {
-    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)))
+    const todo = todos.find(todo => todo.id === id)
+    const newCompleted = !todo.completed
+    
+    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, completed: newCompleted } : todo)))
+    
+    // Play sound and speak when marking as complete
+    if (newCompleted) {
+      completeSound.play()
+      speak(t.todoComplete, { lang: t === translations.ar ? 'ar-SA' : 'en-US' })
+    }
   }
 
   const deleteTodo = (id) => {
@@ -238,11 +267,15 @@ function AlarmClockComponent({ t }) {
       const timeout = setTimeout(() => {
         setIsRinging(true)
         setIsAlarmSet(false)
+        // Play alarm sound
+        alarmSound.play()
+        // Announce alarm
+        speak(t.alarmRinging, { lang: t === translations.ar ? 'ar-SA' : 'en-US' })
       }, timeUntilAlarm)
 
       return () => clearTimeout(timeout)
     }
-  }, [isAlarmSet, alarmTime])
+  }, [isAlarmSet, alarmTime, t])
 
   const setAlarm = () => {
     if (alarmTime) {
@@ -258,6 +291,8 @@ function AlarmClockComponent({ t }) {
 
   const stopAlarm = () => {
     setIsRinging(false)
+    // Stop the alarm sound
+    alarmSound.stop()
   }
 
   return (

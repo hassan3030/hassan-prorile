@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Calendar, Building } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import { translations, experienceData } from "@/lib/translations"
+import Link from "next/link"
 
 export default function ExperiencePage() {
   const [mounted, setMounted] = useState(false)
@@ -48,7 +49,7 @@ export default function ExperiencePage() {
         </motion.div>
 
         {/* Timeline */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto space-y-4">
           {experienceData.map((experience, index) => (
             <motion.div
               key={experience.id}
@@ -66,12 +67,16 @@ export default function ExperiencePage() {
                       <CardTitle className="text-xl font-bold text-primary">
                         {language === "ar" ? experience.titleKeyAr : experience.titleKey}
                       </CardTitle>
-                      <div
-                        className={`flex items-center gap-2 text-muted-foreground mt-2 ${language === "ar" ? "flex-row-reverse" : ""}`}
+                      <Link href={experience.link} target="_blank" rel="noopener noreferrer"
+                      className="hover:translate-x-3 hover:scale-110"
+                      >
+                          <div
+                        className={`flex items-center gap-2 text-muted-foreground mt-2 " ${language === "ar" ? "flex-row-reverse" : ""}`}
                       >
                         <Building className="w-4 h-4" />
                         <span>{language === "ar" ? experience.companyAr : experience.company}</span>
                       </div>
+                      </Link>
                     </div>
                     <Badge variant="secondary" className="w-fit">
                       <Calendar className="w-3 h-3 mr-1" />

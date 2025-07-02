@@ -100,7 +100,7 @@ export default function SkillsPage() {
                       </div>
                       <div className="progress-bar h-2">
                         <motion.div
-                          className="progress-fill h-full"
+                          className="progress-fill h-full animate"
                           initial={{ width: 0 }}
                           animate={{ width: `${skill.level}%` }}
                           transition={{ duration: 1, delay: categoryIndex * 0.2 + skillIndex * 0.1 + 0.5 }}

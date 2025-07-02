@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 20 14% 4%;
+    --foreground: 30 10% 95%;
+    --card: 20 14% 6%;
+    --card-foreground: 30 10% 95%;
+    --popover: 20 14% 6%;
+    --popover-foreground: 30 10% 95%;
+    --primary: 25 95% 60%;
+    --primary-foreground: 20 14% 4%;
+    --secondary: 20 14% 10%;
+    --secondary-foreground: 30 10% 95%;
+    --muted: 20 14% 10%;
+    --muted-foreground: 25 5% 65%;
+    --accent: 20 14% 10%;
+    --accent-foreground: 30 10% 95%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 30 10% 95%;
+    --border: 20 14% 15%;
+    --input: 20 14% 15%;
+    --ring: 25 95% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.glow-effect {
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+}
+
+.dark .glow-effect {
+  box-shadow: 0 0 30px rgba(255, 107, 53, 0.5);
+}
+
+.neon-border {
+  border: 2px solid transparent;
+  background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(255, 167, 38, 0.1)) border-box;
+  border-radius: 12px;
+}
+
+.dark .neon-border {
+  border: 2px solid rgba(255, 107, 53, 0.3);
+  box-shadow: 0 0 15px rgba(255, 107, 53, 0.2);
+}
+
+.floating-circles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-circle {
+  position: absolute;
+  border: 2px solid rgba(255, 107, 53, 0.2);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+/* Progress Bar Styles */
+.progress-bar {
+  background-color: rgba(var(--muted), 0.2);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--primary)/0.8) 100%);
+  border-radius: 9999px;
+  transition: width 1s ease-in-out;
+}
+
+/* Add animation for progress bar */
+@keyframes progressPulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.progress-fill.animate {
+  animation: progressPulse 2s infinite;
+}
+
+/* Alarm animation */
+@keyframes alarmPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--destructive), 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(var(--destructive), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--destructive), 0);
+  }
+}
+
+.alarm-ring {
+  animation: alarmPulse 1s infinite;
+}
