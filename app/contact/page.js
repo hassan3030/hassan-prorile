@@ -158,7 +158,7 @@ export default function ContactPage() {
               <CardContent className="space-y-4">
                 <div className={`flex items-center gap-3 ${language === "ar" ? "flex-row-reverse" : ""}`}>
                   <Mail className="w-5 h-5 text-primary" />
-                  <span className="text-sm">hassan@example.com</span>
+                  <span className="text-sm">hassan.hamdi.dev@gmail.com</span>
                 </div>
                 <div className={`flex items-center gap-3 ${language === "ar" ? "flex-row-reverse" : ""}`}>
                   <Phone className="w-5 h-5 text-primary" />
