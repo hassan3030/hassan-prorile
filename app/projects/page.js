@@ -25,7 +25,7 @@ export default function ProjectsPage() {
   const projects = [{
       title:'DEELDEAL',
       caption:'Trade Smarter',
-      img:'/works/c0.PNG',
+      img:'/works/cc.png',
       linkView:'https://deel-deal-website.csiwm3.easypanel.host/',
       linkHup:'https://github.com/hassan3030/DeelDeal',
       technologies:['HTML' , 'CSS' , 'Bootstrap' , 'JavaScript', 'React','Tailwind CSS', 'Next.js', 'Directus', 'PostgreSQL']
