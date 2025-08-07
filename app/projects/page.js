@@ -23,6 +23,15 @@ export default function ProjectsPage() {
   // }))
 
   const projects = [{
+      title:'DEELDEAL',
+      caption:'Trade Smarter',
+      img:'/works/c0.PNG',
+      linkView:'https://deel-deal-website.csiwm3.easypanel.host/',
+      linkHup:'https://github.com/hassan3030/DeelDeal',
+      technologies:['HTML' , 'CSS' , 'Bootstrap' , 'JavaScript', 'React','Tailwind CSS', 'Next.js', 'Directus', 'PostgreSQL']
+      ,description:""
+    },
+   {
       title:'Gf Center',
       caption:'Cenetr of corses',
       img:'/works/Capture.PNG',
@@ -31,7 +40,6 @@ export default function ProjectsPage() {
       technologies:['HTML' , 'CSS' , 'Bootstrap']
       ,description:""
     },
-   
     {
       title:'BentDesin',
       caption:'Simple page with animation',
@@ -172,7 +180,7 @@ export default function ProjectsPage() {
                     {project.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-1">
+                  <div className="flex  gap-1 overflow-hidden whitespace-nowrap text-ellipsis ">
                     {project.technologies.map((tech) => (
                       <Badge key={tech} variant="secondary" className="text-xs">
                         {tech}
